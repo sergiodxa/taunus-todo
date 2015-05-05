@@ -39,4 +39,4 @@ app.post('/todo/delete', removeTodo);
 taunusExpress(taunus, app, config);
 
 // app listen port 3000
-app.listen(3000);
+app.listen(Number(process.env.PORT || 5000));
