@@ -9,7 +9,7 @@
     "build:styles": "cssnext -c client/css/style.css .bin/public/css/style.css",
     "build:views": "jadum views/** -o .bin",
     "build:wiring": "taunus --output",
-    "start": "nodemon --watch .bin/ --watch controllers/ --watch models/ --watch views/ --watch app.js app.js",
+    "start": "node app.js",
     "watch:styles": "watch 'npm run build:styles' client/css/",
     "watch:scripts": "watchify client/js/main.js -o .bin/public/js/main.js",
     "watch:views": "watch 'npm run build:views' views/",
