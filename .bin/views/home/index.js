@@ -225,7 +225,7 @@ jade_debug.unshift({ lineno: 30, filename: "views/home/index.jade" });
 buf.push("<article>");
 jade_debug.unshift({ lineno: undefined, filename: jade_debug[0].filename });
 jade_debug.unshift({ lineno: 31, filename: "views/home/index.jade" });
-buf.push("<form action=\"/todo/update/\" method=\"POST\">");
+buf.push("<form action=\"/todo/update/\" method=\"POST\" class=\"form-change-status\">");
 jade_debug.unshift({ lineno: undefined, filename: jade_debug[0].filename });
 jade_debug.unshift({ lineno: 32, filename: "views/home/index.jade" });
 buf.push("<input type=\"hidden\" name=\"_id\" value=\"{{_id}}\"/>");
@@ -246,7 +246,7 @@ jade_debug.shift();
 buf.push("</form>");
 jade_debug.shift();
 jade_debug.unshift({ lineno: 37, filename: "views/home/index.jade" });
-buf.push("<form action=\"/todo/update/\" method=\"POST\">");
+buf.push("<form action=\"/todo/update/\" method=\"POST\" class=\"form-change-todo\">");
 jade_debug.unshift({ lineno: undefined, filename: jade_debug[0].filename });
 jade_debug.unshift({ lineno: 38, filename: "views/home/index.jade" });
 buf.push("<input type=\"hidden\" name=\"_id\" value=\"{{_id}}\"/>");
@@ -267,7 +267,7 @@ jade_debug.shift();
 buf.push("</form>");
 jade_debug.shift();
 jade_debug.unshift({ lineno: 43, filename: "views/home/index.jade" });
-buf.push("<form action=\"/todo/delete\" method=\"POST\">");
+buf.push("<form action=\"/todo/delete\" method=\"POST\" class=\"form-delete-todo\">");
 jade_debug.unshift({ lineno: undefined, filename: jade_debug[0].filename });
 jade_debug.unshift({ lineno: 44, filename: "views/home/index.jade" });
 buf.push("<input type=\"hidden\" name=\"_id\" value=\"{{_id}}\"/>");
@@ -289,6 +289,6 @@ buf.push("</template>");
 jade_debug.shift();
 jade_debug.shift();}.call(this,"list" in locals_for_with?locals_for_with.list:typeof list!=="undefined"?list:undefined,"title" in locals_for_with?locals_for_with.title:typeof title!=="undefined"?title:undefined,"undefined" in locals_for_with?locals_for_with.undefined:typeof undefined!=="undefined"?undefined:undefined));;return buf.join("");
 } catch (err) {
-  jade.rethrow(err, jade_debug[0].filename, jade_debug[0].lineno, "header\n  h1=title\n\n  form(action=\"/todo/create\", method=\"POST\").form-create-todo\n    input(type=\"text\", placeholder=\"¿Qué te queda por hacer?\", name=\"todo\")\n\nsection\n  each task in list\n    article\n      form(action=\"/todo/update/\", method=\"POST\").form-change-status\n        input(type=\"hidden\", name=\"_id\", value=task._id)\n        input(type=\"hidden\", name=\"todo\", value=task.todo)\n        input(type=\"checkbox\", name=\"status\", checked=task.status)\n        button(type=\"submit\")\n\n      form(action=\"/todo/update/\", method=\"POST\").form-change-todo\n        input(type=\"hidden\", name=\"_id\", value=task._id)\n        if (task.status)\n          input(type=\"hidden\", name=\"status\", value=\"true\")\n        else\n          input(type=\"hidden\", name=\"status\", value=\"false\")\n        input(type=\"text\", name=\"todo\", value=task.todo)\n        button(type=\"submit\").fa.fa-pencil\n\n      form(action=\"/todo/delete\", method=\"POST\").form-delete-todo\n        input(type=\"hidden\", name=\"_id\", value=task._id)\n        button(type=\"submit\").fa.fa-close\n\ntemplate#task-tplt\n  article\n    form(action=\"/todo/update/\", method=\"POST\")\n      input(type=\"hidden\", name=\"_id\", value=\"{{_id}}\")\n      input(type=\"hidden\", name=\"todo\", value=\"{{todo}}\")\n      input(type=\"checkbox\", name=\"status\")\n      button(type=\"submit\")\n\n    form(action=\"/todo/update/\", method=\"POST\")\n      input(type=\"hidden\", name=\"_id\", value=\"{{_id}}\")\n      input(type=\"hidden\", name=\"status\", value=\"false\")\n      input(type=\"text\", name=\"todo\", value=\"{{todo}}\")\n      button(type=\"submit\").fa.fa-pencil\n\n    form(action=\"/todo/delete\", method=\"POST\")\n      input(type=\"hidden\", name=\"_id\", value=\"{{_id}}\")\n      button(type=\"submit\").fa.fa-close");
+  jade.rethrow(err, jade_debug[0].filename, jade_debug[0].lineno, "header\n  h1=title\n\n  form(action=\"/todo/create\", method=\"POST\").form-create-todo\n    input(type=\"text\", placeholder=\"¿Qué te queda por hacer?\", name=\"todo\")\n\nsection\n  each task in list\n    article\n      form(action=\"/todo/update/\", method=\"POST\").form-change-status\n        input(type=\"hidden\", name=\"_id\", value=task._id)\n        input(type=\"hidden\", name=\"todo\", value=task.todo)\n        input(type=\"checkbox\", name=\"status\", checked=task.status)\n        button(type=\"submit\")\n\n      form(action=\"/todo/update/\", method=\"POST\").form-change-todo\n        input(type=\"hidden\", name=\"_id\", value=task._id)\n        if (task.status)\n          input(type=\"hidden\", name=\"status\", value=\"true\")\n        else\n          input(type=\"hidden\", name=\"status\", value=\"false\")\n        input(type=\"text\", name=\"todo\", value=task.todo)\n        button(type=\"submit\").fa.fa-pencil\n\n      form(action=\"/todo/delete\", method=\"POST\").form-delete-todo\n        input(type=\"hidden\", name=\"_id\", value=task._id)\n        button(type=\"submit\").fa.fa-close\n\ntemplate#task-tplt\n  article\n    form(action=\"/todo/update/\", method=\"POST\").form-change-status\n      input(type=\"hidden\", name=\"_id\", value=\"{{_id}}\")\n      input(type=\"hidden\", name=\"todo\", value=\"{{todo}}\")\n      input(type=\"checkbox\", name=\"status\")\n      button(type=\"submit\")\n\n    form(action=\"/todo/update/\", method=\"POST\").form-change-todo\n      input(type=\"hidden\", name=\"_id\", value=\"{{_id}}\")\n      input(type=\"hidden\", name=\"status\", value=\"false\")\n      input(type=\"text\", name=\"todo\", value=\"{{todo}}\")\n      button(type=\"submit\").fa.fa-pencil\n\n    form(action=\"/todo/delete\", method=\"POST\").form-delete-todo\n      input(type=\"hidden\", name=\"_id\", value=\"{{_id}}\")\n      button(type=\"submit\").fa.fa-close");
 }
 }

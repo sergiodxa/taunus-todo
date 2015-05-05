@@ -28,18 +28,18 @@ section
 
 template#task-tplt
   article
-    form(action="/todo/update/", method="POST")
+    form(action="/todo/update/", method="POST").form-change-status
       input(type="hidden", name="_id", value="{{_id}}")
       input(type="hidden", name="todo", value="{{todo}}")
       input(type="checkbox", name="status")
       button(type="submit")
 
-    form(action="/todo/update/", method="POST")
+    form(action="/todo/update/", method="POST").form-change-todo
       input(type="hidden", name="_id", value="{{_id}}")
       input(type="hidden", name="status", value="false")
       input(type="text", name="todo", value="{{todo}}")
       button(type="submit").fa.fa-pencil
 
-    form(action="/todo/delete", method="POST")
+    form(action="/todo/delete", method="POST").form-delete-todo
       input(type="hidden", name="_id", value="{{_id}}")
       button(type="submit").fa.fa-close
