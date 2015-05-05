@@ -1,0 +1,48 @@
+{
+  "name": "taunus-todo",
+  "version": "1.0.0",
+  "description": "Aplicación de TODO hecha para aprender el microframework Taunus",
+  "main": "app.js",
+  "scripts": {
+    "build": "npm run build:styles && npm run build:views && npm run build:scripts",
+    "build:scripts": "browserify client/js/main.js -o .bin/public/js/main.js",
+    "build:styles": "cssnext -c client/css/style.css .bin/public/css/style.css",
+    "build:views": "jadum views/** -o .bin",
+    "build:wiring": "taunus --output",
+    "start": "nodemon --watch .bin/ --watch controllers/ --watch models/ --watch views/ --watch app.js app.js",
+    "watch:styles": "watch 'npm run build:styles' client/css/",
+    "watch:scripts": "watchify client/js/main.js -o .bin/public/js/main.js",
+    "watch:views": "watch 'npm run build:views' views/",
+    "watch:wiring": "watch 'npm run build:wiring' views/ controllers/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sergiodxa/taunus-todo.git"
+  },
+  "keywords": [
+    "taunus",
+    "todo"
+  ],
+  "author": "Sergio Daniel Xalambrí <sergio@xalambri.com.ar> (http://sergio.xalambri.com.ar/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sergiodxa/taunus-todo/issues"
+  },
+  "homepage": "https://github.com/sergiodxa/taunus-todo",
+  "devDependencies": {
+    "browserify": "^10.0.0",
+    "cssnext": "^1.4.0",
+    "watch": "^0.16.0",
+    "watchify": "^3.2.1"
+  },
+  "dependencies": {
+    "body-parser": "^1.12.3",
+    "diskdb": "^0.1.14",
+    "express": "^4.12.3",
+    "igatajs": "^1.0.0",
+    "jadum": "^1.4.0",
+    "jquery": "^2.1.4",
+    "taunus": "^5.4.4",
+    "taunus-express": "^3.0.0"
+  }
+}

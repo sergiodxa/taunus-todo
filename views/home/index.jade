@@ -1,0 +1,45 @@
+header
+  h1=title
+
+  form(action="/todo/create", method="POST").form-create-todo
+    input(type="text", placeholder="¿Qué te queda por hacer?", name="todo")
+
+section
+  each task in list
+    article
+      form(action="/todo/update/", method="POST").form-change-status
+        input(type="hidden", name="_id", value=task._id)
+        input(type="hidden", name="todo", value=task.todo)
+        input(type="checkbox", name="status", checked=task.status)
+        button(type="submit")
+
+      form(action="/todo/update/", method="POST").form-change-todo
+        input(type="hidden", name="_id", value=task._id)
+        if (task.status)
+          input(type="hidden", name="status", value="true")
+        else
+          input(type="hidden", name="status", value="false")
+        input(type="text", name="todo", value=task.todo)
+        button(type="submit").fa.fa-pencil
+
+      form(action="/todo/delete", method="POST").form-delete-todo
+        input(type="hidden", name="_id", value=task._id)
+        button(type="submit").fa.fa-close
+
+template#task-tplt
+  article
+    form(action="/todo/update/", method="POST")
+      input(type="hidden", name="_id", value="{{_id}}")
+      input(type="hidden", name="todo", value="{{todo}}")
+      input(type="checkbox", name="status")
+      button(type="submit")
+
+    form(action="/todo/update/", method="POST")
+      input(type="hidden", name="_id", value="{{_id}}")
+      input(type="hidden", name="status", value="false")
+      input(type="text", name="todo", value="{{todo}}")
+      button(type="submit").fa.fa-pencil
+
+    form(action="/todo/delete", method="POST")
+      input(type="hidden", name="_id", value="{{_id}}")
+      button(type="submit").fa.fa-close
