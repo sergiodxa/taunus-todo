@@ -44,5 +44,8 @@
     "jquery": "^2.1.4",
     "taunus": "^5.4.4",
     "taunus-express": "^3.0.0"
+  },
+  "engines": {
+    "node": "0.12.2"
   }
 }
